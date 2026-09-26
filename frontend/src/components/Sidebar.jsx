@@ -1,4 +1,13 @@
-function Sidebar() {
+function Sidebar({ activeView, onNavigate }) {
+  const navigationItems = [
+    { id: "overview", label: "Overview", icon: "⌂" },
+    { id: "explore", label: "Explore", icon: "⌕" },
+    { id: "papers", label: "Papers", icon: "□" },
+    { id: "citations", label: "Citations", icon: "↗" },
+    { id: "knowledge", label: "Knowledge", icon: "◇" },
+    { id: "trends", label: "Trends", icon: "⌁" },
+  ];
+
   return (
     <aside className="sidebar">
       <div className="brand">
@@ -13,44 +22,32 @@ function Sidebar() {
       <div className="nav-section">
         <div className="nav-label">WORKSPACE</div>
 
-        <a className="nav-item active" href="#">
-          <span>⌂</span>
-          Overview
-        </a>
-
-        <a className="nav-item" href="#">
-          <span>⌕</span>
-          Explore
-        </a>
-
-        <a className="nav-item" href="#">
-          <span>□</span>
-          Papers
-        </a>
-
-        <a className="nav-item" href="#">
-          <span>↗</span>
-          Citations
-        </a>
-
-        <a className="nav-item" href="#">
-          <span>◇</span>
-          Knowledge
-        </a>
-
-        <a className="nav-item" href="#">
-          <span>⌁</span>
-          Trends
-        </a>
+        {navigationItems.map((item) => (
+          <button
+            key={item.id}
+            className={`nav-item ${
+              activeView === item.id ? "active" : ""
+            }`}
+            onClick={() => onNavigate(item.id)}
+          >
+            <span>{item.icon}</span>
+            {item.label}
+          </button>
+        ))}
       </div>
 
       <div className="nav-section secondary">
         <div className="nav-label">SYSTEM</div>
 
-        <a className="nav-item" href="#">
+        <button
+          className={`nav-item ${
+            activeView === "settings" ? "active" : ""
+          }`}
+          onClick={() => onNavigate("settings")}
+        >
           <span>⚙</span>
           Settings
-        </a>
+        </button>
       </div>
 
       <div className="sidebar-bottom">

@@ -836,3 +836,133 @@ a {
   color: #626875;
   font-size: 13px;
 }
+
+/* =========================
+   INTERACTIVE NAVIGATION
+========================= */
+
+.nav-item {
+  width: 100%;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px;
+  margin-bottom: 3px;
+
+  border: 1px solid transparent;
+  border-radius: 7px;
+
+  color: #777d89;
+  background: transparent;
+
+  text-align: left;
+  font-family: inherit;
+  font-size: 12px;
+
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+
+  transition: 0.18s ease;
+}
+
+.nav-item span {
+  width: 17px;
+  color: #686e7b;
+  text-align: center;
+  font-size: 14px;
+}
+
+.nav-item:hover {
+  color: #dfe1e6;
+  background: #111319;
+}
+
+.nav-item:focus,
+.nav-item:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.nav-item.active {
+  color: #f2f1f8;
+  border-color: #292238;
+  background: #16131e;
+}
+
+.nav-item.active span {
+  color: #9275ff;
+}
+
+.nav-item.active {
+  color: #f2f1f8;
+  border-color: #292238;
+  background: #16131e;
+}
+
+/* =========================
+   WORKSPACE PLACEHOLDER
+========================= */
+
+.workspace-placeholder {
+  max-width: 1180px;
+  min-height: 420px;
+  margin: 52px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  border: 1px solid #1f2229;
+  border-radius: 10px;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(102, 73, 220, 0.07),
+      transparent 45%
+    ),
+    #0d0f13;
+  text-align: center;
+}
+
+.placeholder-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
+  border: 1px solid #49377c;
+  border-radius: 13px;
+  color: #a28aff;
+  background: #171229;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.workspace-placeholder h2 {
+  margin: 8px 0 10px;
+  color: #e4e5e9;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.workspace-placeholder p {
+  max-width: 560px;
+  margin: 0;
+  color: #626873;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.placeholder-status {
+  margin-top: 24px;
+  padding: 6px 9px;
+  border: 1px solid #282332;
+  border-radius: 4px;
+  color: #7563b2;
+  background: #121017;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}

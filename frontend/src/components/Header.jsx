@@ -1,9 +1,12 @@
-function Header() {
+function Header({ title }) {
   return (
     <header className="header">
       <div>
-        <div className="breadcrumb">NEXUS / OVERVIEW</div>
-        <h1>Research Intelligence</h1>
+        <div className="breadcrumb">
+          NEXUS / {title.toUpperCase()}
+        </div>
+
+        <h1>{title}</h1>
       </div>
 
       <div className="header-right">
