@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 
-DATABASE_URL = "postgresql+psycopg://nexus:nexus_password@localhost:5432/nexus"
+DATABASE_URL = "postgresql+psycopg://nexus:nexus_password@127.0.0.1:5432/nexus"
 
 
 engine = create_engine(
