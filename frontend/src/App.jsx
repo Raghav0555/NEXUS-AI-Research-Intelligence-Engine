@@ -1,122 +1,121 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="app">
+      <aside className="sidebar">
+        <div className="brand">
+          <div className="brand-mark">N</div>
+          <div>
+            <h1>NEXUS</h1>
+            <span>Research Intelligence</span>
+          </div>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
 
-      <div className="ticks"></div>
+        <nav className="navigation">
+          <a className="nav-item active" href="#">
+            <span>⌂</span>
+            Dashboard
+          </a>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+          <a className="nav-item" href="#">
+            <span>⌕</span>
+            Research
+          </a>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+          <a className="nav-item" href="#">
+            <span>◈</span>
+            Knowledge Graph
+          </a>
+
+          <a className="nav-item" href="#">
+            <span>↗</span>
+            Trends
+          </a>
+
+          <a className="nav-item" href="#">
+            <span>◎</span>
+            Evidence
+          </a>
+        </nav>
+
+        <div className="sidebar-footer">
+          <div className="system-status">
+            <span className="status-dot"></span>
+            System Online
+          </div>
+          <span className="version">NEXUS v0.1.0</span>
+        </div>
+      </aside>
+
+      <main className="main-content">
+        <header className="topbar">
+          <div>
+            <p className="eyebrow">RESEARCH INTELLIGENCE ENGINE</p>
+            <h2>Research Dashboard</h2>
+          </div>
+
+          <div className="topbar-actions">
+            <button className="icon-button">?</button>
+            <div className="avatar">RS</div>
+          </div>
+        </header>
+
+        <section className="hero">
+          <div>
+            <p className="hero-label">AI-POWERED LITERATURE INTELLIGENCE</p>
+            <h3>
+              Explore the world's
+              <br />
+              <span>research knowledge.</span>
+            </h3>
+            <p className="hero-description">
+              Connect scientific literature, discover relationships,
+              analyze research trends, and trace every insight back to
+              its evidence.
+            </p>
+          </div>
+        </section>
+
+        <section className="search-section">
+          <div className="search-box">
+            <span className="search-icon">⌕</span>
+            <input
+              type="text"
+              placeholder="Ask NEXUS about a research topic..."
+            />
+            <button className="search-button">Search</button>
+          </div>
+        </section>
+
+        <section className="stats-grid">
+          <div className="stat-card">
+            <span className="stat-label">PAPERS INDEXED</span>
+            <strong>0</strong>
+            <span className="stat-description">Research corpus</span>
+          </div>
+
+          <div className="stat-card">
+            <span className="stat-label">CITATIONS MAPPED</span>
+            <strong>0</strong>
+            <span className="stat-description">Citation relationships</span>
+          </div>
+
+          <div className="stat-card">
+            <span className="stat-label">KNOWLEDGE NODES</span>
+            <strong>0</strong>
+            <span className="stat-description">Research concepts</span>
+          </div>
+
+          <div className="stat-card">
+            <span className="stat-label">ACTIVE SOURCES</span>
+            <strong>0</strong>
+            <span className="stat-description">Connected sources</span>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
