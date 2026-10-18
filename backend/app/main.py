@@ -1,6 +1,7 @@
-from fastapi import FastAPI
+﻿from fastapi import FastAPI
 
 from database.connection import init_db
+from backend.app.routers.papers import router as papers_router
 
 
 app = FastAPI(
@@ -15,6 +16,9 @@ def startup():
     init_db()
 
 
+app.include_router(papers_router)
+
+
 @app.get("/")
 def root():
     return {
@@ -27,6 +31,4 @@ def root():
 
 @app.get("/health")
 def health_check():
-    return {
-        "status": "healthy"
-    }
+    return {"status": "healthy"}
