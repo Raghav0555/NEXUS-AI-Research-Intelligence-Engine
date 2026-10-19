@@ -109,3 +109,59 @@ def test_delete_missing_paper_returns_404(client):
     response = client.delete("/papers/9999")
 
     assert response.status_code == 404
+
+def test_update_paper(client):
+    created = client.post(
+        "/papers/",
+        json={"title": "Original Title", "year": 2024},
+    ).json()
+
+    response = client.put(
+        f"/papers/{created['id']}",
+        json={"title": "Updated Title", "year": 2025},
+    )
+
+    assert response.status_code == 200
+    assert response.json()["title"] == "Updated Title"
+    assert response.json()["year"] == 2025
+
+
+def test_update_missing_paper_returns_404(client):
+    response = client.put(
+        "/papers/9999",
+        json={"title": "Missing Paper"},
+    )
+
+    assert response.status_code == 404
+
+
+def test_update_paper_rejects_invalid_data(client):
+    created = client.post(
+        "/papers/",
+        json={"title": "Valid Paper"},
+    ).json()
+
+    response = client.put(
+        f"/papers/{created['id']}",
+        json={"title": "", "year": -1},
+    )
+
+    assert response.status_code == 422
+
+
+def test_update_paper_rejects_duplicate_doi(client):
+    client.post(
+        "/papers/",
+        json={"title": "Existing Paper", "doi": "10.1234/existing"},
+    )
+    created = client.post(
+        "/papers/",
+        json={"title": "Paper To Update"},
+    ).json()
+
+    response = client.put(
+        f"/papers/{created['id']}",
+        json={"title": "Paper To Update", "doi": "10.1234/existing"},
+    )
+
+    assert response.status_code == 409

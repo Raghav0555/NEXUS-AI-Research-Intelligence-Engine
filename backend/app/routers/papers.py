@@ -1,7 +1,7 @@
 ﻿from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
-
+from backend.app.schemas.paper import PaperCreate, PaperResponse, PaperUpdate
 from database.connection import get_db
 from database.models import Paper
 from backend.app.schemas.paper import PaperCreate, PaperResponse
@@ -52,6 +52,34 @@ def get_paper(paper_id: int, db: Session = Depends(get_db)):
 
     return paper
 
+@router.put("/{paper_id}", response_model=PaperResponse)
+def update_paper(
+    paper_id: int,
+    paper_data: PaperUpdate,
+    db: Session = Depends(get_db),
+):
+    paper = db.get(Paper, paper_id)
+
+    if paper is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Paper not found.",
+        )
+
+    for field, value in paper_data.model_dump().items():
+        setattr(paper, field, value)
+
+    try:
+        db.commit()
+        db.refresh(paper)
+    except IntegrityError as exc:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="A paper with this DOI or arXiv ID already exists.",
+        ) from exc
+
+    return paper
 
 @router.delete("/{paper_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_paper(paper_id: int, db: Session = Depends(get_db)):
